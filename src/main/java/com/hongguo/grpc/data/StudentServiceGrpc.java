@@ -1,4 +1,4 @@
-package com.hongguo.grpc.service;
+package com.hongguo.grpc.data;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 import static io.grpc.stub.ClientCalls.asyncBidiStreamingCall;
