@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package com.hongguo.proto;
+
+option java_package = "com.hongguo.grpc.data";
+option java_outer_classname = "StudentProto";
+option java_multiple_files = true;
+
+service StudentService {
+    rpc GetRealNameByUsername (MyRequest) returns (MyResponse);
+
+    rpc GetStudentsByAge (StudentRequest) returns (stream StudentResponse);
+
+    rpc GetStudentByHobbies (stream StudentHobbyRequest) returns (StudentResponseWrapper);
+
+    rpc BiTalk (stream TalkRequest) returns (stream TalkResponse);
+}
+
+message TalkRequest {
+    string msg = 1;
+}
+
+message TalkResponse {
+    string uuid = 1;
+}
+
+message MyRequest {
+    string username = 1;
+}
+
+message MyResponse {
+    string realname = 1;
+}
+
+message StudentRequest {
+    int32 age = 1;
+}
+
+message StudentHobbyRequest {
+    repeated string hobby = 1;
+}
+
+message StudentResponse {
+    string name = 1;
+    int32 age = 2;
+    string city = 3;
+}
+
+message StudentResponseWrapper {
+    repeated StudentResponse studentResponse = 1;
+}
